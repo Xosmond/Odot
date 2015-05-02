@@ -4,7 +4,7 @@ RSpec.describe "todo_lists/new", type: :view do
   before(:each) do
     assign(:todo_list, TodoList.new(
       :titulo => "MyString",
-      :descipcion => "MyText"
+      :descripcion => "MyText"
     ))
   end
 
@@ -15,7 +15,7 @@ RSpec.describe "todo_lists/new", type: :view do
 
       assert_select "input#todo_list_titulo[name=?]", "todo_list[titulo]"
 
-      assert_select "textarea#todo_list_descipcion[name=?]", "todo_list[descipcion]"
+      assert_select "textarea#todo_list_descripcion[name=?]", "todo_list[descripcion]"
     end
   end
 end

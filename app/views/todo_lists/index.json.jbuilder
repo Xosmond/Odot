@@ -1,4 +1,4 @@
 json.array!(@todo_lists) do |todo_list|
-  json.extract! todo_list, :id, :titulo, :descipcion
+  json.extract! todo_list, :id, :titulo, :descripcion
   json.url todo_list_url(todo_list, format: :json)
 end

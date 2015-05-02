@@ -5,11 +5,11 @@ RSpec.describe "todo_lists/index", type: :view do
     assign(:todo_lists, [
       TodoList.create!(
         :titulo => "Titulo",
-        :descipcion => "MyText"
+        :descripcion => "MyText"
       ),
       TodoList.create!(
         :titulo => "Titulo",
-        :descipcion => "MyText"
+        :descripcion => "MyText"
       )
     ])
   end

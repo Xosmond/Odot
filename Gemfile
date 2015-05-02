@@ -4,10 +4,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
-group :development, :test do
-
-end
-
+# Para tenerlo listo para subir a la web
 group :production do
 	gem 'pg'
 end
@@ -47,7 +44,8 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  #framework para test 
+  #framework para test
+  #Para instalar correr 'rails generate rspec:install'
   gem 'rspec-rails', '~> 3.0'
 end
 group :test do
@@ -57,8 +55,10 @@ end
 # Usar bootstrap version sass para tener todo directo
 gem 'bootstrap-sass', '~> 3.3.4'
 # Simple form para poder tener todo simple y enlazado con bootstrap
+#Para instalar correr 'rails generate simple_form:install --bootstrap' y si usas foundation 'rails generate simple_form:install --foundation'
 gem 'simple_form'
 # Para tener rails en español
+# En app.rb configuarar a :es
 gem 'rails-i18n'
 # Para la autentificacion
 # gem 'devise'
