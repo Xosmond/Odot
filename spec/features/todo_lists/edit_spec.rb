@@ -9,9 +9,7 @@ let!(:todo_list){TodoList.create(titulo:"Nueva entrada",descripcion:"Prueba de e
 
 		todo_list = opciones[:todo_list]
 
-		visit "/todo_lists"
-
-		within "todo_list_#{todo_list.id}" do
+		within "#todo_list_#{todo_list.id}" do
 			click_link "Editar"
 		end
 
@@ -24,10 +22,10 @@ let!(:todo_list){TodoList.create(titulo:"Nueva entrada",descripcion:"Prueba de e
 		visit "/todo_lists"
 
 		editar_tarea todo_list: todo_list,titulo:"New Titulo",descripcion: "New Descripcion"
-		entrada.reload
+		todo_list.reload
 
-		expect(page).to have_content("La tarea ha sido creada satisfactoriamente.")
-		expect(entrada.titulo).to eq("New titulo")
-		expect(entrada.descripcion).to eq("New descripcion")
+		expect(page).to have_content("La tarea ha sido actualizada satisfactoriamente.")
+		expect(todo_list.titulo).to eq("New Titulo")
+		expect(todo_list.descripcion).to eq("New Descripcion")
 	end
 end
