@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+label {
+	color:palette(grey, light);
+}
 .entrada {
 	margin: em(15px);
+	height: em(145px);
+}
+.info {
+	height: em(88px);
 }

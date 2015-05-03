@@ -1,5 +1,8 @@
-<h1>Nueva Tarea</h1>
+<div>
+	<h1>Nueva Tarea</h1>
+	<%= render 'form' %>
+</div>
+<div class="col-xs-12">
+	<%= link_to 'Regresar', todo_lists_path %>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', todo_lists_path %>
