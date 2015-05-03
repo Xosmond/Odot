@@ -9,6 +9,11 @@
 <body class="g-wrap">
 	<div class="s-wrap">
 		<div class="container">
+			<% flash.each do |tipo,mensaje| %>
+				<div class="alert <%= flash_class(tipo.to_s) %> alert-dismissible" role="alert">
+  					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> <%= mensaje %>
+				</div>
+			<%end%>
 			<%= yield %>
 		</div>
 	</div>

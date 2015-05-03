@@ -2,7 +2,7 @@
 <div class="col-xs-6">
   <% if @todo_list.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@todo_list.errors.count, "error") %> prohibited this todo_list from being saved:</h2>
+      <h2><%= pluralize(@todo_list.errors.count, "errores") %> no han dejado que se pueda guardar correctamente</h2>
 
       <ul>
       <% @todo_list.errors.full_messages.each do |message| %>
@@ -17,7 +17,7 @@
   <div class="col-xs-6">&nbsp</div>
   <div class="col-xs-1">&nbsp</div>
   <div class="col-xs-2 actions">
-    <%= f.button :submit ,"Crear nueva tarea" %>
+    <%= f.button :submit  %>
   </div>
 <% end %>
 
