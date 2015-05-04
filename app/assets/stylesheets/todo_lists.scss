@@ -8,16 +8,10 @@ label {
 .lista {
 	margin: em(15px);
 	height: em(145px);
-	.admin {
-		display: none;
-	}
-	&:hover {
-	background: #FAFAFA;
-		.admin {
-			display: inline;
-		}
-	}
 }
 .info {
 	height: em(88px);
+}
+.encabezado{
+	text-align: center;
 }

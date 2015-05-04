@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "creando listas" do
 	def crear_tarea (opciones={})
-		opciones[:titulo] ||= "Nueva tarea loca"
+		opciones[:titulo] ||= "Nueva lista loca"
 		opciones[:descripcion] ||= "Correr en circulo"
 		visit "/todo_lists"
 		click_link "Nueva lista"
@@ -14,9 +14,9 @@ describe "creando listas" do
 	end
 	it "redirecciona a la pagina de feed cuando esta correcto" do
 		crear_tarea
-		expect(page).to have_content("Su nueva Lista ha sido creada")
+		expect(page).to have_content("La lista ha sido creada satisfactoriamente.")
 	end
-	it "Manda error si no se pone el titulo de la tarea" do
+	it "Manda error si no se pone el titulo de la lista" do
 		expect(TodoList.all.count).to eq(0)
 		crear_tarea titulo:""
 		expect(TodoList.all.count).to eq(0)
@@ -24,7 +24,7 @@ describe "creando listas" do
 		visit "/todo_lists"
 		expect(page).to_not have_content("Correr en circulo")
 	end
-	it "Manda error si el titulo de la tarea tiene menos de 3 letras" do
+	it "Manda error si el titulo de la lista tiene menos de 3 letras" do
 		expect(TodoList.all.count).to eq(0)
 		crear_tarea titulo:"Ha"
 		expect(TodoList.all.count).to eq(0)
@@ -32,20 +32,20 @@ describe "creando listas" do
 		visit "/todo_lists"
 		expect(page).to_not have_content("Correr en circulo")
 	end
-	it "Manda error si no se pone la descripcion de la tarea" do
+	it "Manda error si no se pone la descripcion de la lista" do
 		expect(TodoList.all.count).to eq(0)
 		crear_tarea descripcion:""
 		expect(TodoList.all.count).to eq(0)
 		expect(page).to have_content("error")
 		visit "/todo_lists"
-		expect(page).to_not have_content("Nueva tarea loca")
+		expect(page).to_not have_content("Nueva lista loca")
 	end
-	it "Manda error si la descripcion de la tarea es menor de 10 letras" do
+	it "Manda error si la descripcion de la lista es menor de 10 letras" do
 		expect(TodoList.all.count).to eq(0)
 		crear_tarea descripcion:"hogar"
 		expect(TodoList.all.count).to eq(0)
 		expect(page).to have_content("error")
 		visit "/todo_lists"
-		expect(page).to_not have_content("Nueva tarea loca")
+		expect(page).to_not have_content("Nueva lista loca")
 	end
 end

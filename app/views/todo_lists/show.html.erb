@@ -1,13 +1,42 @@
-<h2>Su nueva Lista ha sido creada</h2>
-<p>
-  <strong>Titulo:</strong>
-  <%= @todo_list.titulo %>
-</p>
+<div class="encabezado col-xs-9">
+	<h1 class="list-title"><%= @todo_list.titulo %></h1>
+	<strong><%= @todo_list.descripcion %></strong>
+</div>
+<div class="col-xs-3">
+	<div>&nbsp</div>
+	<div>&nbsp</div>
+	<div>&nbsp</div>
+	<div>&nbsp</div>
+	<div>&nbsp</div>
+	<div>&nbsp</div>
+	<div>
+		<%= link_to 'Editar lista', edit_todo_list_path(@todo_list) %> |
+		<%= link_to 'Eliminar lista', @todo_list, method: :delete, data: { confirm: 'Are you sure?' } %> 
+	</div>
+</div>
+<div>
+	<!--<table>
+	  <thead>
+	    <tr>
+	      <th>Fecha</th>
+	      <th>Contenido</th>
+	      <th></th>
+	      <th></th>
+	      <th></th>
+	    </tr>
+	  </thead>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @todo_list.descripcion %>
-</p>
+	  <tbody>
+	    @todo_lists.each do |item| 
+	      <tr id="dom_id(todo_list) ">
+	        <td> todo_list.title </td>
+	        <td> todo_list.description </td>
+	        <td> link_to 'Show', todo_list </td>
+	        <td> link_to 'Edit', edit_todo_list_path(todo_list) </td>
+	        <td> link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } </td>
+	      </tr>
+	    end 
+	  </tbody>
+	</table>-->
+</div>
 
-<%= link_to 'Editar', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Regresar', todo_lists_path %>

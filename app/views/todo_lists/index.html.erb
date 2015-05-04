@@ -1,21 +1,17 @@
-<h1>Mi Listas de Actividades</h1>
-<div class="col-xs-10">
+<h1>Mis Listas de Trabajo </h1>
+<div class="col-xs-9">
   <% @todo_lists.each do |todo_list| %>
-    <div id="<%=dom_id(todo_list)%>" class="col-xs-2 well lista">
+    <div onclick="location.href='<%= todo_list_path(todo_list)%>';" style="cursor: pointer;" id="<%=dom_id(todo_list)%>" class="col-xs-3 well lista">
       <div class="info">
         <strong><%= todo_list.titulo %></strong>
         <p>
-          <% if todo_list.descripcion.length >45%>
-              <%= todo_list.descripcion[0,45]+ " ..." %>
+          <% if todo_list.descripcion.length >47%>
+              <%= todo_list.descripcion[0,47]+ " ..." %>
           <%else%>
               <%= todo_list.descripcion %> 
           <%end%>
         </p>
       </div>
-      <span class="admin">
-        <%= link_to 'Eliminar', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to 'Editar', edit_todo_list_path(todo_list)%>
-        </span>
     </div>
   <% end %>
 </div>
