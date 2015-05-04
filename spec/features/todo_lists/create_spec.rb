@@ -10,7 +10,7 @@ describe "creando listas" do
 		expect(page).to have_content("Nueva Tarea")
 		fill_in "Titulo", with: opciones[:titulo]
 		fill_in "Descripcion", with: opciones[:descripcion]
-		click_button "Crear nueva tarea"
+		click_button "Crear Todo list"
 	end
 	it "redirecciona a la pagina de feed cuando esta correcto" do
 		crear_tarea
