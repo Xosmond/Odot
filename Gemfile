@@ -51,6 +51,8 @@ end
 group :test do
   # Para test de interaccion con el usuario
   gem 'capybara'
+  # Para poder hacer las relaciones de la base de datos para le modo test
+  gem 'shoulda-matchers', '~> 2.8.0'
 end
 # Usar bootstrap version sass para tener todo directo
 gem 'bootstrap-sass', '~> 3.3.4'
