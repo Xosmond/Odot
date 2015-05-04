@@ -6,15 +6,15 @@ describe "creando listas" do
 		opciones[:titulo] ||= "Nueva tarea loca"
 		opciones[:descripcion] ||= "Correr en circulo"
 		visit "/todo_lists"
-		click_link "Nueva tarea"
-		expect(page).to have_content("Nueva Tarea")
+		click_link "Nueva lista"
+		expect(page).to have_content("Nueva Lista")
 		fill_in "Titulo", with: opciones[:titulo]
 		fill_in "Descripcion", with: opciones[:descripcion]
 		click_button "Crear Todo list"
 	end
 	it "redirecciona a la pagina de feed cuando esta correcto" do
 		crear_tarea
-		expect(page).to have_content("Su nueva Tarea ha sido creada")
+		expect(page).to have_content("Su nueva Lista ha sido creada")
 	end
 	it "Manda error si no se pone el titulo de la tarea" do
 		expect(TodoList.all.count).to eq(0)

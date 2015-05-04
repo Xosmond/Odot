@@ -19,7 +19,7 @@ let!(:todo_list){TodoList.create(titulo:"Nueva entrada",descripcion:"Prueba de e
 		visit "/todo_lists"
 		editar_tarea todo_list: todo_list,titulo:"New Titulo",descripcion: "New Descripcion"
 		todo_list.reload
-		expect(page).to have_content("La tarea ha sido actualizada satisfactoriamente.")
+		expect(page).to have_content("La lista ha sido actualizada satisfactoriamente.")
 		expect(todo_list.titulo).to eq("New Titulo")
 		expect(todo_list.descripcion).to eq("New Descripcion")
 	end

@@ -11,7 +11,7 @@ let!(:todo_list){TodoList.create(titulo:"Nueva entrada",descripcion:"Prueba de e
 	it "Elimina perfectamente la entrada" do
 		visit "/todo_lists"
 		eliminar_tarea 
-		expect(page).to have_content("La tarea ha sido eliminada satisfactoriamente.")
+		expect(page).to have_content("La lista ha sido eliminada satisfactoriamente.")
 		expect(TodoList.count).to eq(0)
 	end
 end
