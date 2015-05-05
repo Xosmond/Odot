@@ -8,35 +8,29 @@
 	<div>&nbsp</div>
 	<div>&nbsp</div>
 	<div>&nbsp</div>
-	<div>&nbsp</div>
+	<div>
+		<%= link_to 'Nueva Tarea', new_todo_list_todo_item_path(@todo_list.id),class:"btn btn-default btn-lg" %>
+	</div>
 	<div>
 		<%= link_to 'Editar lista', edit_todo_list_path(@todo_list) %> |
 		<%= link_to 'Eliminar lista', @todo_list, method: :delete, data: { confirm: 'Are you sure?' } %> 
 	</div>
 </div>
-<div>
-	<!--<table>
-	  <thead>
+<table class="table table-hover">
+	<thead>
 	    <tr>
-	      <th>Fecha</th>
-	      <th>Contenido</th>
-	      <th></th>
-	      <th></th>
-	      <th></th>
+	    	<th><h3>Fecha</h3></th>
+	      	<th><h3>Contenido</h3></th>
+	      	<th></th>
 	    </tr>
-	  </thead>
-
-	  <tbody>
-	    @todo_lists.each do |item| 
-	      <tr id="dom_id(todo_list) ">
-	        <td> todo_list.title </td>
-	        <td> todo_list.description </td>
-	        <td> link_to 'Show', todo_list </td>
-	        <td> link_to 'Edit', edit_todo_list_path(todo_list) </td>
-	        <td> link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } </td>
-	      </tr>
-	    end 
-	  </tbody>
-	</table>-->
-</div>
+	</thead>
+	<tbody>
+	    <%@todo_list.todo_items.each do |item| %>
+	    <tr>
+	        <td><%= select_date(item.created_at, date_separator: '/') %></td>
+	        <td><%= item.contenido %></td>
+	     </tr>
+		<%end%> 
+	</tbody>
+</table>
 

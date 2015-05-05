@@ -1,0 +1,5 @@
+<h2>Nueva Tarea</h2>
+<%= simple_form_for [@todo_list,@todo_item] do |f| %>
+	<%=f.input :contenido %>
+	<%=f.button :submit %>
+<%end%>
