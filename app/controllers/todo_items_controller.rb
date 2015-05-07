@@ -1,5 +1,5 @@
 class TodoItemsController < ApplicationController
-  before_action :find_todo_list, only: [:new,:create, :edit, :update,:destroy]
+  before_action :find_todo_list, only: [:new,:create, :edit, :update,:destroy,:complete]
   def index
   end
 
@@ -43,6 +43,18 @@ class TodoItemsController < ApplicationController
       format.html { redirect_to todo_list_url, notice: 'La tarea ha sido eliminada satisfactoriamente.' }
       format.json { head :no_content }
       else
+      end
+    end
+  end
+  def complete
+    @todo_item = @todo_list.todo_items.find(params[:todo_item_id])
+    respond_to do |format|
+      if @todo_item.update_attribute(:completado_en, Time.now)
+        format.html { redirect_to todo_list_path(@todo_list.id), notice: 'Tarea Completada.' }
+        format.json { render :show, status: :ok, location: @todo_item }
+      else
+        format.html { render :new }
+        format.json { render json: @todo_item.errors, status: :unprocessable_entity }
       end
     end
   end

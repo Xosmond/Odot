@@ -29,8 +29,12 @@
 	    <tr id= "<%=dom_id(item)%>">
 	        <td><%= item.created_at %></td>
 	        <td><%= item.contenido %></td> 
-	     	<td ><%= link_to 'Editar', edit_todo_list_todo_item_path(@todo_list,item)%></td>
-	     	<td ><%= link_to 'Eliminar',todo_list_todo_item_path(@todo_list,item), method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea'}%> </td>
+	     	<td ><%= link_to 'Editar', edit_todo_list_todo_item_path(@todo_list,item)%> | <%= link_to 'Eliminar',todo_list_todo_item_path(@todo_list,item), method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea'}%> | 
+	     	<%if item.completado_en.nil? %>
+	     	<%= link_to 'Completar',todo_list_todo_item_complete_path(@todo_list,item), method: :patch%>
+	     	<%else%>
+	     		Completada
+	     	<%end%></td>
 	     </tr>
 		<%end%> 
 	</tbody>
