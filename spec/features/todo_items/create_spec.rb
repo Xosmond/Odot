@@ -10,12 +10,21 @@ let!(:todo_list){TodoList.create(titulo:"Nueva lista",descripcion:"Prueba de edi
 		expect(page).to have_content("Nueva Tarea")
 		fill_in "Contenido", with: opciones[:contenido]
 		click_button "Crear Todo item"
-		expect(page).to have_content("Tarea agregada satisfactoriamente.")
-		within ("table tbody") do
-			expect(page).to have_content("Nueva contenido loco")
-		end
 	end
 	it "Crea perfectamente la tarea" do
 		crear_item
+		expect(page).to have_content("Tarea agregada satisfactoriamente.")
+		within ("#todo_item_#{todo_list.id}") do
+			expect(page).to have_content("Nueva contenido loco")
+		end
+	end
+	it "muestra un error cuando no existe contenido" do
+		crear_item contenido:""
+		expect(page).to_not have_content("Tarea agregada satisfactoriamente.")
+		
+	end
+	it "muestra un error cuando no el contenido tiene menos de dos letras" do
+		crear_item contenido:"a"
+		expect(page).to_not have_content("Tarea agregada satisfactoriamente.")
 	end
 end

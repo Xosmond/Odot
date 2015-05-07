@@ -1,0 +1,16 @@
+<%= simple_form_for [@todo_list,@todo_item] do |f| %>
+    <% if @todo_item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@todo_item.errors.count, "errores") %> no han dejado que se pueda guardar correctamente</h2>
+
+        <ul>
+        <% @todo_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <%=f.input :contenido %>
+  <%=f.button :submit %>
+<%end%>
+

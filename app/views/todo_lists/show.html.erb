@@ -9,14 +9,14 @@
 	<div>&nbsp</div>
 	<div>&nbsp</div>
 	<div>
-		<%= link_to 'Nueva Tarea', new_todo_list_todo_item_path(@todo_list.id),class:"btn btn-default btn-lg" %>
+		<%= link_to 'Nueva Tarea', new_todo_list_todo_item_path(@todo_list.id),class:"btn btn-default" %>
 	</div>
 	<div>
 		<%= link_to 'Editar lista', edit_todo_list_path(@todo_list) %> |
-		<%= link_to 'Eliminar lista', @todo_list, method: :delete, data: { confirm: 'Are you sure?' } %> 
+		<%= link_to 'Eliminar lista', @todo_list, method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta lista?' } %> 
 	</div>
 </div>
-<table class="table table-hover">
+<table class="table">
 	<thead>
 	    <tr>
 	    	<th><h3>Fecha</h3></th>
@@ -26,9 +26,11 @@
 	</thead>
 	<tbody>
 	    <%@todo_list.todo_items.each do |item| %>
-	    <tr>
-	        <td><%= select_date(item.created_at, date_separator: '/') %></td>
-	        <td><%= item.contenido %></td>
+	    <tr id= "<%=dom_id(item)%>">
+	        <td><%= item.created_at %></td>
+	        <td><%= item.contenido %></td> 
+	     	<td ><%= link_to 'Editar', edit_todo_list_todo_item_path(@todo_list,item)%></td>
+	     	<td ><%= link_to 'Eliminar',todo_list_todo_item_path(@todo_list,item), method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea'}%> </td>
 	     </tr>
 		<%end%> 
 	</tbody>
