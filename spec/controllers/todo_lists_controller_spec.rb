@@ -19,7 +19,10 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe TodoListsController, type: :controller do
-
+  before do
+    usuario = Usuario.new(email:"new@email.com",encrypted_password:"mynewpass")
+    sign_in usuario
+  end
   # This should return the minimal set of attributes required to create a valid
   # TodoList. As you add validations to TodoList, be sure to
   # adjust the attributes here as well.
@@ -35,7 +38,6 @@ RSpec.describe TodoListsController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # TodoListsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
   describe "GET #index" do
     it "assigns all todo_lists as @todo_lists" do
       todo_list = TodoList.create! valid_attributes
@@ -54,8 +56,9 @@ RSpec.describe TodoListsController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new todo_list as @todo_list" do
+      todo_list = TodoList.new
       get :new, {}, valid_session
-      expect(assigns(:todo_list)).to be_a_new(TodoList)
+      expect(todo_list).to be_a_new(TodoList)
     end
   end
 

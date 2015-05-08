@@ -2,7 +2,10 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe "Actualizando tareas" do
-let!(:todo_list){TodoList.create(titulo:"Nueva lista",descripcion:"Prueba de edicion.")}
+let!(:usuario) do
+	registro email: "email@gone.com", password:"newpassnew"
+end
+let!(:todo_list){TodoList.create(usuario_id:1,titulo:"Nueva lista",descripcion:"Prueba de edicion.")}
 let!(:todo_item){TodoItem.create(todo_list_id:1,contenido:"Correr en circulo")}
 	def editar_item (opciones={})
 		opciones[:contenido] ||= "Contenido Editado"

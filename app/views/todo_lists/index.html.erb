@@ -1,4 +1,4 @@
-<h1>Mis Listas de Trabajo </h1>
+<h1>Mis Listas</h1>
 <div class="col-xs-9">
   <% @todo_lists.each do |todo_list| %>
     <div onclick="location.href='<%= todo_list_path(todo_list)%>';" style="cursor: pointer;" id="<%=dom_id(todo_list)%>" class="col-xs-3 well lista">

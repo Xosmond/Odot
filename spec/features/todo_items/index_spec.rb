@@ -2,7 +2,10 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe "Viendo Tareas : " do
-let!(:todo_list){TodoList.create(titulo:"Nueva lista",descripcion:"Prueba de items.")}
+let!(:usuario) do
+	registro email: "email@gone.com", password:"newpassnew"
+end
+let!(:todo_list){TodoList.create(usuario_id:1,titulo:"Nueva lista",descripcion:"Prueba de items.")}
 	it "muestra ningun el titulo de la lista." do
 		visit "/todo_lists/#{todo_list.id}"
 		expect(page).to have_content(todo_list.titulo)

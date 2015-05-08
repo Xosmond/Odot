@@ -63,7 +63,7 @@ gem 'simple_form'
 # En app.rb configuarar a :es
 gem 'rails-i18n'
 # Para la autentificacion
-# gem 'devise'
+gem 'devise'
 # para tener devise en español
-# gem 'devise-i18n'
+gem 'devise-i18n'
 

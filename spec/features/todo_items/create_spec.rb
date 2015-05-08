@@ -2,7 +2,10 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe "Creando tareas" do
-let!(:todo_list){TodoList.create(titulo:"Nueva lista",descripcion:"Prueba de edicion.")}
+let!(:usuario) do
+	registro email: "email@gone.com", password:"newpassnew"
+end
+let!(:todo_list){TodoList.create(usuario_id:1,titulo:"Nueva lista",descripcion:"Prueba de edicion.")}
 	def crear_item (opciones={})
 		opciones[:contenido] ||= "Nueva contenido loco"
 		visit "/todo_lists/#{todo_list.id}"

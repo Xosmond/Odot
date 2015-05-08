@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :usuarios
   resources :todo_lists do
     resources :todo_items do
       patch :complete

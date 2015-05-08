@@ -1,4 +1,5 @@
 class TodoListsController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
 
   # GET /todo_lists
@@ -24,7 +25,7 @@ class TodoListsController < ApplicationController
   # POST /todo_lists
   # POST /todo_lists.json
   def create
-    @todo_list = TodoList.new(todo_list_params)
+    @todo_list = TodoList.new(usuario_id:current_usuario.id,titulo:todo_list_params[:titulo],descripcion:todo_list_params[:descripcion] )
 
     respond_to do |format|
       if @todo_list.save

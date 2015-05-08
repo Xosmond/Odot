@@ -2,10 +2,14 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe "Creando listas : " do
+let!(:usuario) do
+	registro email: "email@gone.com", password:"newpassnew"
+end
 	def crear_tarea (opciones={})
 		opciones[:titulo] ||= "Nueva lista loca"
 		opciones[:descripcion] ||= "Correr en circulo"
 		visit "/todo_lists"
+		expect(page).to have_content ("Mis Listas")
 		click_link "Nueva lista"
 		expect(page).to have_content("Nueva Lista")
 		fill_in "Titulo", with: opciones[:titulo]

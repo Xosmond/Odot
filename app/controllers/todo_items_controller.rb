@@ -1,4 +1,5 @@
 class TodoItemsController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :find_todo_list, only: [:new,:create, :edit, :update,:destroy,:complete]
   def index
   end

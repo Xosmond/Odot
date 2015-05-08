@@ -1,0 +1,19 @@
+<div class="col-xs-6 col-xs-offset-3 well">
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <fieldset>
+      <LEGEND>Ingresar</LEGEND>
+    <%= f.input :email, autofocus: true %>
+    <%= f.input :password, autocomplete: "off"%>
+    <% if devise_mapping.rememberable? -%>
+        <%=f.input :remember_me, as: :boolean %>
+    <% end %>
+    <div class=" actions">
+    <%= f.button :submit, "Ingresar" %>
+    </div>
+    </fieldset>
+  <p style="margin-top:2%">
+    <%= render "devise/shared/links" %>
+  </p>
+<% end %>
+</div>
+
