@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :usuarios
+
+  devise_scope :usuario do
+   get "logout" , to: "devise/sessions#destroy", as: :logout
+  end
   resources :todo_lists do
     resources :todo_items do
       patch :complete

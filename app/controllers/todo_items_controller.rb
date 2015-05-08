@@ -1,10 +1,18 @@
 class TodoItemsController < ApplicationController
   before_action :authenticate_usuario!
-  before_action :find_todo_list, only: [:new,:create, :edit, :update,:destroy,:complete]
+  before_action :find_todo_list, only: [:index,:show,:new,:create, :edit, :update,:destroy,:complete]
+  before_action :verificar_pertenencia
   def index
+  end
+  def show
+      respond_to do |format|
+      format.html { redirect_to @todo_list }
+      format.json { head :no_content }
+    end
   end
 
   def new
+
   	@todo_item = @todo_list.todo_items.new
   end
 
@@ -60,9 +68,19 @@ class TodoItemsController < ApplicationController
     end
   end
 
+  def verificar_pertenencia
+    if @todo_list.usuario_id != current_usuario.id
+      respond_to do |format|
+      format.html { redirect_to todo_lists_url, notice: 'No puede acceder a listas que no le pertenecen' }
+      format.json { head :no_content }
+      end
+    end
+  end
+
   def find_todo_list
     @todo_list = TodoList.find(params[:todo_list_id])
   end
+
   def url_options
       {todo_list_id: params[:todo_list_id]}.merge(super)
   end

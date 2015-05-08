@@ -1,22 +1,18 @@
-<div class="encabezado col-xs-9">
+<div class="encabezado">
+	<%= render 'info' %>
 	<h1 class="list-title"><%= @todo_list.titulo %></h1>
-	<strong><%= @todo_list.descripcion %></strong>
+	<p><strong><%= @todo_list.descripcion %></strong></p>
+	<p><%= link_to 'Editar lista', edit_todo_list_path(@todo_list) %> |
+		<%= link_to 'Eliminar lista', @todo_list, method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta lista?' } %></p>
+		 
 </div>
-<div class="col-xs-3">
-	<div>&nbsp</div>
-	<div>&nbsp</div>
-	<div>&nbsp</div>
-	<div>&nbsp</div>
-	<div>&nbsp</div>
-	<div>
+<div  class="col-xs-12">
+	<div style="float:right">
 		<%= link_to 'Nueva Tarea', new_todo_list_todo_item_path(@todo_list.id),class:"btn btn-default" %>
 	</div>
-	<div>
-		<%= link_to 'Editar lista', edit_todo_list_path(@todo_list) %> |
-		<%= link_to 'Eliminar lista', @todo_list, method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta lista?' } %> 
-	</div>
 </div>
-<table class="table">
+<div class="col-xs-12">
+<table  class="table">
 	<thead>
 	    <tr>
 	    	<th><h3>Fecha</h3></th>
@@ -39,4 +35,5 @@
 		<%end%> 
 	</tbody>
 </table>
+</div>
 

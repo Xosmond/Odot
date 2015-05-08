@@ -1,11 +1,12 @@
 class TodoListsController < ApplicationController
   before_action :authenticate_usuario!
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+  before_action :verificar_pertenencia,only: [:show, :edit, :update, :destroy]
 
   # GET /todo_lists
   # GET /todo_lists.json
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = current_usuario.todo_lists.all
   end
 
   # GET /todo_lists/1
@@ -59,6 +60,14 @@ class TodoListsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to todo_lists_url, notice: 'La lista ha sido eliminada satisfactoriamente.' }
       format.json { head :no_content }
+    end
+  end
+  def verificar_pertenencia
+    if @todo_list.usuario_id != current_usuario.id
+      respond_to do |format|
+      format.html { redirect_to todo_lists_url, notice: 'No puede acceder a listas que no le pertenecen' }
+      format.json { head :no_content }
+      end
     end
   end
 
