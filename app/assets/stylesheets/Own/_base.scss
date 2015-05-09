@@ -39,3 +39,7 @@ h3 {
   font-size: em(16px);
   color: palette(grey, light);
 }
+p {
+  font-weight: $font-weight--light;
+  color: palette(grey, light);
+}
