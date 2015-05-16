@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Odot</title>
+  <%= stylesheet_link_tag    'site', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<%= render partial: "layouts/flash" %>
+		</header>
+		<div><%= yield %></div>
+	</div>
+	<footer style="text-align:center;">
+			<%= link_to "Ya estas regitrado? Inicia Sesión", login_path %>
+	</footer>
+</body>
+</html>

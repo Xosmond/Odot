@@ -12,7 +12,7 @@ let!(:todo_item){TodoItem.create(todo_list_id:1,contenido:"Correr en circulo")}
 		todo_list = opciones[:todo_list]
 		visit todo_list_path(todo_list)
 		within "#todo_item_#{todo_list.id}" do
-			click_link "Completar"
+			click_link "C"
 		end
 	end
 	it "lo hace sin problemas" do
@@ -22,7 +22,7 @@ let!(:todo_item){TodoItem.create(todo_list_id:1,contenido:"Correr en circulo")}
 		expect(page).to have_content("Tarea Completada.")
 		expect(todo_item.completado_en).to_not be_nil
 		within "#todo_item_#{todo_list.id}" do
-			expect(page).to have_content("Completada")
+			expect(page).to have_content("Co")
 		end
 	end
 end

@@ -51,8 +51,12 @@ end
 group :test do
   # Para test de interaccion con el usuario
   gem 'capybara'
+  # Para test con mail 
+  gem 'capybara-email'
   # Para poder hacer las relaciones de la base de datos para le modo test
   gem 'shoulda-matchers', '~> 2.8.0'
+  # Para tener fixtures buenos
+  gem 'factory_girl_rails'
 end
 # Usar bootstrap version sass para tener todo directo
 gem 'bootstrap-sass', '~> 3.3.4'
@@ -66,4 +70,8 @@ gem 'rails-i18n'
 gem 'devise'
 # para tener devise en español
 gem 'devise-i18n'
+# para encriptar
+gem 'bcrypt'
+# Para tener paginas estaticas
+gem 'high_voltage', '~> 2.3.0'
 

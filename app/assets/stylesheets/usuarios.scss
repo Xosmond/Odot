@@ -1,0 +1,14 @@
+.baseperfil {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+}
+
+.contenido {
+    background-image: url(image-path('background.jpg'));
+    background-size: em(200px) em(200px);
+    background-position: center; 
+    height: em(200px);
+    width: em(200px);
+    max-width: 300px;
+    max-height: 300px;
+}

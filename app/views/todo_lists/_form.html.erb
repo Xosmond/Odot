@@ -1,5 +1,5 @@
 <%= simple_form_for(@todo_list) do |f| %>
-<div class="col-xs-6">
+<div class="nospaces">
   <% if @todo_list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@todo_list.errors.count, "errores") %> no han dejado que se pueda guardar correctamente</h2>
@@ -14,9 +14,7 @@
   <%= f.input :titulo%>
   <%= f.input :descripcion%>
   </div>
-  <div class="col-xs-6">&nbsp</div>
-  <div class="col-xs-1">&nbsp</div>
-  <div class="col-xs-2 actions">
+  <div class="nospaces allright col-xs-4 actions">
     <%= f.button :submit  %>
   </div>
 <% end %>

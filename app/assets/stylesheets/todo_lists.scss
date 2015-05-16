@@ -6,17 +6,23 @@ label {
 	color:palette(grey, light);
 }
 .lista {
-	margin: em(15px);
-	height: em(145px);
+	height: em(50px);
 }
 .info {
 	height: em(88px);
+	.description {
+		opacity: 0.5;
+	}
 }
 .encabezado{
 	text-align: center;
 	padding: 1%;
-	h1 {
-		padding-left: 5%;
-		text-align: left;
-	}
+}
+.nospaces {
+	margin: 0;
+	padding: 0;
+}
+.allright {
+	float: right;
+	text-align: right;
 }

@@ -11,7 +11,7 @@ module UsuarioHelpers
 	end
 
 	def iniciar_sesion (opciones={})
-		visit "/usuarios/sign_in"
+		visit "/"
 		expect(page).to have_content("Ingresar")
 		fill_in :usuario_email, with: opciones[:email]
 		fill_in :usuario_password, with: opciones[:password] 

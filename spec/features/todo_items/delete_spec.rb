@@ -12,7 +12,7 @@ let!(:todo_item){TodoItem.create(todo_list_id:1,contenido:"Correr en circulo")}
 		todo_list = opciones[:todo_list]
 		visit todo_list_path(todo_list)
 		within "#todo_item_#{todo_list.id}" do
-			click_link "Eliminar"
+			click_link "El"
 		end
 	end
 	it "lo hace sin problemas" do

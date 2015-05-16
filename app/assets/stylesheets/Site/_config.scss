@@ -21,6 +21,7 @@ $font-weight--ultra-bold : 900;
 $white    : #fff;
 $black    : #0b0b0b;
 $grey     : #797e83;
+$naranja  : #df965f;
 
 $fountain-blue  : #52bab3;
 $emerald        : #5ece7f;
@@ -28,7 +29,7 @@ $sunglo         : #e67478;
 $coral          : #ff784f;
 $purple-majesty : #9279c3;
 $scooter        : #39add1;
-$back-color 	: #272823;
+$azul-moradin	: #313a61;
 
 // Color Usage
 
@@ -53,6 +54,23 @@ $palettes: (
 		base     : $black,
 		dark     : darken($black, 10%)
 	),
+	naranja: (
+		xx-light : lighten($naranja, 43%),
+	    x-light  : lighten($naranja, 35%),
+	    light    : lighten($naranja, 12%),
+	    base     : $naranja,
+	    dark     : darken($naranja, 8%),
+	    x-dark   : darken($naranja, 16%),
+	    xx-dark   : darken($naranja, 26%)
+	),
+	moradin: (
+		xx-light : lighten($azul-moradin, 43%),
+	    x-light  : lighten($azul-moradin, 35%),
+	    light    : lighten($azul-moradin, 12%),
+	    base     : $azul-moradin,
+	    dark     : darken($azul-moradin, 8%),
+	    x-dark   : darken($azul-moradin, 16%)
+	)
 );
 
 // UI Colors
@@ -72,6 +90,4 @@ $base__line      : 24px;
 
 // Path to Assets
 
-$path--rel       : "../img";
-
-// Nav
+$path--rel       : "../../img";

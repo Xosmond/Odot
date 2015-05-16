@@ -13,7 +13,7 @@ let!(:todo_item){TodoItem.create(todo_list_id:1,contenido:"Correr en circulo")}
 		todo_list = opciones[:todo_list]
 		visit todo_list_path(todo_list)
 		within "#todo_item_#{todo_list.id}" do
-			click_link "Editar"
+			click_link "Ed"
 		end
 		expect(page).to have_content("Editar Tarea")
 		fill_in "Contenido", with: opciones[:contenido]

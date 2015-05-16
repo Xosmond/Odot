@@ -1,5 +1,6 @@
-	<%= render 'info' %>
-<div class="encabezado">
+<div class="col-xs-12" ><%= render 'info' %></div>
+
+<div class="col-xs-12 encabezado">
 		<h1><%= @todo_list.titulo %></h1>
 		<p><strong><%= @todo_list.descripcion %></strong></p>
 			<p><%= link_to 'Editar lista', edit_todo_list_path(@todo_list) %> |
@@ -14,9 +15,9 @@
 <table  class="table">
 	<thead>
 	    <tr>
-	    	<th><h3>Fecha</h3></th>
-	      	<th><h3>Contenido</h3></th>
-	      	<th></th>
+	    	<th style="width:20%;"><h3>Fecha</h3></th>
+	      	<th style="width:60%;"><h3>Contenido</h3></th>
+	      	<th style="width:20%;"></th>
 	    </tr>
 	</thead>
 	<tbody>
@@ -24,11 +25,11 @@
 	    <tr id= "<%=dom_id(item)%>">
 	        <td><p><%= item.created_at %></p> </td>
 	        <td><p><%= item.contenido %></p>  </td> 
-	     	<td ><p><%= link_to 'Editar', edit_todo_list_todo_item_path(@todo_list,item)%> | <%= link_to 'Eliminar',todo_list_todo_item_path(@todo_list,item), method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea'}%> | 
+	     	<td ><p><%= link_to 'Ed', edit_todo_list_todo_item_path(@todo_list,item)%> | <%= link_to 'El',todo_list_todo_item_path(@todo_list,item), method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea'}%> | 
 	     	<%if item.completado_en.nil? %>
-	     	<%= link_to 'Completar',todo_list_todo_item_complete_path(@todo_list,item), method: :patch%>
+	     	<%= link_to 'C',todo_list_todo_item_complete_path(@todo_list,item), method: :patch%>
 	     	<%else%>
-	     		Completada
+	     		Co
 	     	<%end%></p> </td>
 	     </tr>
 		<%end%> 
