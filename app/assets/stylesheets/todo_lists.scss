@@ -6,18 +6,23 @@ label {
 	color:palette(grey, light);
 }
 .lista {
-	margin: em(15px);
-	height: em(145px);
-	.admin {
-		display: none;
-	}
-	&:hover {
-	background: #FAFAFA;
-		.admin {
-			display: inline;
-		}
-	}
+	height: em(50px);
 }
 .info {
 	height: em(88px);
+	.description {
+		opacity: 0.5;
+	}
+}
+.encabezado{
+	text-align: center;
+	padding: 1%;
+}
+.nospaces {
+	margin: 0;
+	padding: 0;
+}
+.allright {
+	float: right;
+	text-align: right;
 }

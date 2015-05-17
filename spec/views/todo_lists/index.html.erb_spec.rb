@@ -17,6 +17,6 @@ RSpec.describe "todo_lists/index", type: :view do
   it "renders a list of todo_lists" do
     render
     assert_select "div>strong", :text => "Titulo".to_s, :count => 2
-    assert_select "strong+p", :text => "MyTextcorriendo".to_s, :count => 2
+    assert_select "strong+span", :text => "MyTextcorriendo".to_s, :count => 2
   end
 end

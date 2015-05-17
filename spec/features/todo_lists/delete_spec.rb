@@ -1,16 +1,17 @@
 require 'rails_helper'
 require 'spec_helper'
 
-describe "Editando listas" do
-let!(:todo_list){TodoList.create(titulo:"Nueva entrada",descripcion:"Prueba de edicion.")}
-	def eliminar_tarea
-		within "#todo_list_#{todo_list.id}" do
-			click_link "Eliminar"
-		end
+describe "Eliminando listas : " do
+let!(:usuario) do
+	registro email: "email@gone.com", password:"newpassnew"
+end
+let!(:todo_list){TodoList.create(usuario_id:1,titulo:"Nueva lista",descripcion:"Prueba de edicion.")}
+	def eliminar_lista
+		click_link "Eliminar lista"
 	end
-	it "Elimina perfectamente la entrada" do
-		visit "/todo_lists"
-		eliminar_tarea 
+	it "Lo hace perfectamente." do
+		visit "/todo_lists/#{todo_list.id}"
+		eliminar_lista
 		expect(page).to have_content("La lista ha sido eliminada satisfactoriamente.")
 		expect(TodoList.count).to eq(0)
 	end

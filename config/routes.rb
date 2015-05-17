@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
-  resources :todo_lists
-  root 'todo_lists#index'
+
+  devise_for :usuarios
+
+  get 'perfil/:id', to: "usuarios#mostrar", as: :perfil
+  
+  devise_scope :usuario do
+   get "login" , to: "devise/sessions#new", as: :login
+   get "logout" , to: "devise/sessions#destroy", as: :logout
+   get "registro" , to: "devise/registrations#new", as: :registro
+  end
+  resources :todo_lists do
+    resources :todo_items do
+      patch :complete
+    end
+  end
+  root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,10 @@
+<% if usuario_signed_in? %>
+	<div class="allright nospaces col-xs-12">
+		<div class="col-xs-2">
+		<img src="<%= current_usuario.gravatar_url %>"></div>
+		<div class="allright nospaces col-xs-9">
+			<p><%= current_usuario.email %></p>
+			<%= link_to "Salir #{image_tag('Icons/Quit.png')}".html_safe,logout_path,:style =>"text-decoration: none;" %>
+		</div>
+	</div>
+<%end%>
