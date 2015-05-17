@@ -31,7 +31,7 @@
 	        	<td><%=image_tag "Icons/Complete.png" ,:class => "acciones"%></td>
 	        <%end%>
 	        <td><p><%= item.contenido %></p>  </td> 
-	     	<td ><p><%= link_to (image_tag "Icons/Edit.png"), edit_todo_list_todo_item_path(@todo_list,item),:id=>"Edit"%> | <%= link_to (image_tag "Icons/Delete.png"),todo_list_todo_item_path(@todo_list,item),:id=>"Delete", method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea'}%>
+	     	<td ><p><%= link_to (image_tag "Icons/Edit.png"), edit_todo_list_todo_item_path(@todo_list,item),:id=>"Edit"%> | <%= link_to (image_tag "Icons/Delete.png"),todo_list_todo_item_path(@todo_list,item),:id=>"Delete", method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea?'}%>
 	     	</p> </td>
 	     </tr>
 		<%end%> 
