@@ -5,7 +5,7 @@
   </div>
   <div class="nospaces col-xs-12">
     <div class="nospaces col-xs-8"><h1>Mis Listas</h1></div>
-    <div class="allright nospaces col-xs-4" style="padding:10% 0 0 0;"><%= link_to 'Nueva lista', new_todo_list_path, class:"btn btn-default btn-lg"%></div>
+    <div class="allright nospaces col-xs-4" style="padding:10% 0 0 0;"><%= link_to (image_tag "Icons/Add.png"), new_todo_list_path,:id=>"Add"%></div>
   </div>
     <div class="nospaces col-xs-12">
       <% @todo_lists.each do |todo_list| %>

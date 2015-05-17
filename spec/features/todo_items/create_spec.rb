@@ -9,7 +9,7 @@ let!(:todo_list){TodoList.create(usuario_id:1,titulo:"Nueva lista",descripcion:"
 	def crear_item (opciones={})
 		opciones[:contenido] ||= "Nueva contenido loco"
 		visit "/todo_lists/#{todo_list.id}"
-		click_link "Nueva Tarea"
+		find("#Add").click
 		expect(page).to have_content("Nueva Tarea")
 		fill_in "Contenido", with: opciones[:contenido]
 		click_button "Crear Todo item"

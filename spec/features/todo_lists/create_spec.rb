@@ -10,7 +10,7 @@ end
 		opciones[:descripcion] ||= "Correr en circulo"
 		visit "/todo_lists"
 		expect(page).to have_content ("Mis Listas")
-		click_link "Nueva lista"
+		find("#Add").click
 		expect(page).to have_content("Nueva Lista")
 		fill_in "Titulo", with: opciones[:titulo]
 		fill_in "Descripcion", with: opciones[:descripcion]

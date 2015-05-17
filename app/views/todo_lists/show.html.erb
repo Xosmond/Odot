@@ -7,30 +7,32 @@
 				<%= link_to 'Eliminar lista', @todo_list, method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta lista?' } %></p>
 </div>
 <div  class="col-xs-12">
-	<div style="float:right">
-		<%= link_to 'Nueva Tarea', new_todo_list_todo_item_path(@todo_list.id),class:"btn btn-default" %>
+	<div class="allright">
+		<%= link_to (image_tag "Icons/Add.png"), new_todo_list_todo_item_path(@todo_list.id),:id=>"Add" %>
 	</div>
 </div>
 <div class="col-xs-12">
 <table  class="table">
 	<thead>
 	    <tr>
-	    	<th style="width:20%;"><h3>Fecha</h3></th>
-	      	<th style="width:60%;"><h3>Contenido</h3></th>
-	      	<th style="width:20%;"></th>
+	    	<th style="width:10%;"><h3><strong>Fecha</strong></h3></th>
+	    	<th style="width:10%;text-align: center"><h3><strong>Estado</strong></h3></th>
+	      	<th style="width:60%;"><h3><strong>Contenido</strong></h3></th>
+	      	<th style="width:20%;text-align: center"><h3><strong>Acciones</strong></h3></th>
 	    </tr>
 	</thead>
 	<tbody>
 	    <%@todo_list.todo_items.each do |item| %>
-	    <tr id= "<%=dom_id(item)%>">
-	        <td><p><%= item.created_at %></p> </td>
+	    <tr class="acciones"id= "<%=dom_id(item)%>">
+	        <td><p><%= Date.parse(item.created_at.to_s) %></p> </td>
+	        <%if item.completado_en.nil? %>
+	        <td><%= link_to (image_tag "Icons/Complete.png",:class=>"yet"),todo_list_todo_item_complete_path(@todo_list,item), method: :patch%></td>
+	        <%else%>
+	        	<td><%=image_tag "Icons/Complete.png" ,:class => "acciones"%></td>
+	        <%end%>
 	        <td><p><%= item.contenido %></p>  </td> 
-	     	<td ><p><%= link_to 'Ed', edit_todo_list_todo_item_path(@todo_list,item)%> | <%= link_to 'El',todo_list_todo_item_path(@todo_list,item), method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea'}%> | 
-	     	<%if item.completado_en.nil? %>
-	     	<%= link_to 'C',todo_list_todo_item_complete_path(@todo_list,item), method: :patch%>
-	     	<%else%>
-	     		Co
-	     	<%end%></p> </td>
+	     	<td ><p><%= link_to (image_tag "Icons/Edit.png"), edit_todo_list_todo_item_path(@todo_list,item),:id=>"Edit"%> | <%= link_to (image_tag "Icons/Delete.png"),todo_list_todo_item_path(@todo_list,item),:id=>"Delete", method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea'}%>
+	     	</p> </td>
 	     </tr>
 		<%end%> 
 	</tbody>

@@ -49,7 +49,7 @@ class TodoItemsController < ApplicationController
     @todo_item = @todo_list.todo_items.find(params[:id])
     respond_to do |format|
       if @todo_item.destroy
-      format.html { redirect_to todo_list_url, notice: 'La tarea ha sido eliminada satisfactoriamente.' }
+      format.html { redirect_to todo_list_path(@todo_list.id), notice: 'La tarea ha sido eliminada satisfactoriamente.' }
       format.json { head :no_content }
       else
       end
