@@ -15,7 +15,6 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
 gem 'bcrypt'
-gem 'high_voltage', '~> 2.3.0'
 gem 'pg'
 
 group :development, :test do
