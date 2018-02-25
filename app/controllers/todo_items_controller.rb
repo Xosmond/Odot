@@ -1,18 +1,17 @@
 class TodoItemsController < ApplicationController
-  before_action :authenticate_usuario!
+  before_action :authenticate_user!
   before_action :find_todo_list, only: [:index,:show,:new,:create, :edit, :update,:destroy,:complete]
-  before_action :verificar_pertenencia
+  before_action :verify_ownership
   def index
   end
   def show
-      respond_to do |format|
+    respond_to do |format|
       format.html { redirect_to @todo_list }
       format.json { head :no_content }
     end
   end
 
   def new
-
   	@todo_item = @todo_list.todo_items.new
   end
 
@@ -45,6 +44,7 @@ class TodoItemsController < ApplicationController
       end
     end
   end
+
   def destroy
     @todo_item = @todo_list.todo_items.find(params[:id])
     respond_to do |format|
@@ -55,10 +55,11 @@ class TodoItemsController < ApplicationController
       end
     end
   end
+
   def complete
     @todo_item = @todo_list.todo_items.find(params[:todo_item_id])
     respond_to do |format|
-      if @todo_item.update_attribute(:completado_en, Time.now)
+      if @todo_item.update_attribute(:completed_at, Time.now)
         format.html { redirect_to todo_list_path(@todo_list.id), notice: 'Tarea Completada.' }
         format.json { render :show, status: :ok, location: @todo_item }
       else
@@ -68,8 +69,8 @@ class TodoItemsController < ApplicationController
     end
   end
 
-  def verificar_pertenencia
-    if @todo_list.usuario_id != current_usuario.id
+  def verify_ownership
+    if @todo_list.user_id != current_user.id
       respond_to do |format|
       format.html { redirect_to todo_lists_url, notice: 'No puede acceder a listas que no le pertenecen' }
       format.json { head :no_content }
@@ -86,6 +87,6 @@ class TodoItemsController < ApplicationController
   end
 
   def todo_item_params
-    params.require(:todo_item).permit(:contenido)
+    params.require(:todo_item).permit(:content)
   end
 end

@@ -1,5 +1,5 @@
-FactoryGirl.define do
-  factory :usuario do
+FactoryBot.define do
+  factory :user do
     sequence(:email) { |n| "user#{n}@odot.com" }
     password    "newpassnew"
     password_confirmation "newpassnew"

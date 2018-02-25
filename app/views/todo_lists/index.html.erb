@@ -11,11 +11,11 @@
       <% @todo_lists.each do |todo_list| %>
         <div onclick="location.href='<%= todo_list_path(todo_list)%>';" style="cursor: pointer;" id="<%=dom_id(todo_list)%>" class="col-xs-12 well lista">
           <div class="info">
-            <strong><%= todo_list.titulo %></strong>
-            <span class="description allright"><% if todo_list.descripcion.length >40%>
-                  <%= todo_list.descripcion[0,40]+ " ..." %>
+            <strong><%= todo_list.title %></strong>
+            <span class="description allright"><% if todo_list.description.length >40%>
+                  <%= todo_list.description[0,40]+ " ..." %>
               <%else%>
-                  <%= todo_list.descripcion %> 
+                  <%= todo_list.description %>
               <%end%></span>
           </div>
         </div>

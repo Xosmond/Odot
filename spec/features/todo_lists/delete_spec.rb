@@ -2,10 +2,10 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe "Eliminando listas : " do
-let!(:usuario) do
-	registro email: "email@gone.com", password:"newpassnew"
+let!(:user) do
+	sign_up email: "email@gone.com", password:"newpassnew"
 end
-let!(:todo_list){TodoList.create(usuario_id:1,titulo:"Nueva lista",descripcion:"Prueba de edicion.")}
+let!(:todo_list){TodoList.create(user_id: User.all.pluck(:id).last, title:"Nueva lista", description: "Prueba de edicion.")}
 	def eliminar_lista
 		click_link "Eliminar lista"
 	end

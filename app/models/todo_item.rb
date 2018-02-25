@@ -1,4 +1,4 @@
-class TodoItem < ActiveRecord::Base
+class TodoItem < ApplicationRecord
   belongs_to :todo_list
-  validates :contenido, presence:true, length: {minimum: 2}
+  validates :content, presence:true, length: {minimum: 2}
 end

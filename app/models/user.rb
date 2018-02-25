@@ -1,6 +1,4 @@
-class Usuario < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -8,12 +6,14 @@ class Usuario < ActiveRecord::Base
 
   before_save :downcase_email
 
-  def nombre_completo
-    nombres + " " + apellidos
+  def full_name
+    name + " " + last_name
   end
-  def gravatar_url 
+
+  def gravatar_url
     "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase.strip)}"
   end
+
   def downcase_email
     self.email = email.downcase
   end

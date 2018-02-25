@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
   def home
-  	if usuario_signed_in?
+  	if user_signed_in?
   		redirect_to todo_lists_path
   	else
-  		render layout: 'home' 
+  		render layout: 'home'
   	end
   end
 end

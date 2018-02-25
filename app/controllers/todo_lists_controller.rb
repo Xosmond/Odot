@@ -1,12 +1,12 @@
 class TodoListsController < ApplicationController
-  before_action :authenticate_usuario!
+  before_action :authenticate_user!
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
-  before_action :verificar_pertenencia,only: [:show, :edit, :update, :destroy]
+  before_action :verify_ownership, only: [:show, :edit, :update, :destroy]
 
   # GET /todo_lists
   # GET /todo_lists.json
   def index
-    @todo_lists = current_usuario.todo_lists.all
+    @todo_lists = current_user.todo_lists.all
   end
 
   # GET /todo_lists/1
@@ -26,7 +26,7 @@ class TodoListsController < ApplicationController
   # POST /todo_lists
   # POST /todo_lists.json
   def create
-    @todo_list = TodoList.new(usuario_id:current_usuario.id,titulo:todo_list_params[:titulo],descripcion:todo_list_params[:descripcion] )
+    @todo_list = TodoList.new(user_id: current_user.id, title: todo_list_params[:title], description: todo_list_params[:description] )
 
     respond_to do |format|
       if @todo_list.save
@@ -62,8 +62,9 @@ class TodoListsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def verificar_pertenencia
-    if @todo_list.usuario_id != current_usuario.id
+
+  def verify_ownership
+    if @todo_list.user_id != current_user.id
       respond_to do |format|
       format.html { redirect_to todo_lists_url, notice: 'No puede acceder a listas que no le pertenecen' }
       format.json { head :no_content }
@@ -79,6 +80,6 @@ class TodoListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_list_params
-      params.require(:todo_list).permit(:titulo, :descripcion)
+      params.require(:todo_list).permit(:title, :description)
     end
 end

@@ -1,8 +1,8 @@
 <div class="col-xs-12" ><%= render 'info' %></div>
 
 <div class="col-xs-12 encabezado">
-		<h1><%= @todo_list.titulo %></h1>
-		<p><strong><%= @todo_list.descripcion %></strong></p>
+		<h1><%= @todo_list.title %></h1>
+		<p><strong><%= @todo_list.description %></strong></p>
 			<p><%= link_to 'Editar lista', edit_todo_list_path(@todo_list) %> |
 				<%= link_to 'Eliminar lista', @todo_list, method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta lista?' } %></p>
 </div>
@@ -25,16 +25,16 @@
 	    <%@todo_list.todo_items.each do |item| %>
 	    <tr class="acciones"id= "<%=dom_id(item)%>">
 	        <td><p><%= Date.parse(item.created_at.to_s) %></p> </td>
-	        <%if item.completado_en.nil? %>
+	        <%if item.completed_at.nil? %>
 	        <td><%= link_to (image_tag "Icons/Complete.png",:class=>"yet"),todo_list_todo_item_complete_path(@todo_list,item), method: :patch%></td>
 	        <%else%>
 	        	<td><%=image_tag "Icons/Complete.png" ,:class => "acciones"%></td>
 	        <%end%>
-	        <td><p><%= item.contenido %></p>  </td> 
+	        <td><p><%= item.content %></p>  </td>
 	     	<td ><p><%= link_to (image_tag "Icons/Edit.png"), edit_todo_list_todo_item_path(@todo_list,item),:id=>"Edit"%> | <%= link_to (image_tag "Icons/Delete.png"),todo_list_todo_item_path(@todo_list,item),:id=>"Delete", method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta tarea?'}%>
 	     	</p> </td>
 	     </tr>
-		<%end%> 
+		<%end%>
 	</tbody>
 </table>
 </div>
